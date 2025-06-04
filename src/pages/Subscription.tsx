@@ -39,7 +39,7 @@ const Subscription = () => {
         "Export to CSV, Excel & CRM",
         "90-day history",
         "Team collaboration (up to 5 users)",
-        "API access",
+        "Signal Hire API integration",
         "Custom integrations"
       ],
       color: "from-purple-500 to-pink-500",
@@ -58,7 +58,7 @@ const Subscription = () => {
         "All export formats",
         "Unlimited history",
         "Unlimited team members",
-        "Advanced API access",
+        "Full Signal Hire API access",
         "Custom integrations",
         "Dedicated account manager",
         "SLA guarantee",
@@ -80,24 +80,24 @@ const Subscription = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-900 to-black text-white">
       {/* Header */}
-      <header className="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-50">
+      <header className="border-b border-gray-800 bg-black/50 backdrop-blur-sm sticky top-0 z-50 animate-fade-in">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <Link to="/" className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg flex items-center justify-center">
+          <Link to="/" className="flex items-center space-x-2 hover:scale-105 transition-transform">
+            <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg flex items-center justify-center animate-glow">
               <Search className="w-5 h-5 text-white" />
             </div>
-            <h1 className="text-xl font-bold text-gray-900">ContactFinder</h1>
+            <h1 className="text-xl font-bold text-white">ContactFinder</h1>
           </Link>
           <div className="flex items-center space-x-4">
             <Link to="/login">
-              <Button variant="ghost" className="text-gray-600 hover:text-blue-600">
+              <Button variant="ghost" className="text-gray-300 hover:text-blue-400 hover:bg-gray-800 transition-all">
                 Login
               </Button>
             </Link>
             <Link to="/signup">
-              <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+              <Button className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white hover:scale-105 transition-all">
                 Sign Up
               </Button>
             </Link>
@@ -106,30 +106,37 @@ const Subscription = () => {
       </header>
 
       {/* Hero Section */}
-      <section className="py-20 px-4">
-        <div className="container mx-auto text-center">
-          <Badge className="mb-6 bg-gradient-to-r from-purple-100 to-pink-100 text-purple-700 hover:from-purple-200 hover:to-pink-200 border-0" variant="secondary">
-            <Sparkles className="w-3 h-3 mr-1" />
+      <section className="py-20 px-4 relative overflow-hidden">
+        {/* Animated background elements */}
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl animate-float"></div>
+          <div className="absolute top-40 right-10 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl animate-float" style={{ animationDelay: '1s' }}></div>
+          <div className="absolute bottom-20 left-1/2 w-72 h-72 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl animate-float" style={{ animationDelay: '2s' }}></div>
+        </div>
+        
+        <div className="container mx-auto text-center relative z-10">
+          <Badge className="mb-6 bg-gradient-to-r from-purple-600/20 to-pink-600/20 text-purple-300 hover:from-purple-600/30 hover:to-pink-600/30 border-purple-500/30 animate-slide-up" variant="secondary">
+            <Sparkles className="w-3 h-3 mr-1 animate-bounce-slow" />
             Choose Your Perfect Plan
           </Badge>
-          <h1 className="text-5xl font-bold text-gray-900 mb-6 leading-tight">
+          <h1 className="text-5xl font-bold text-white mb-6 leading-tight animate-slide-up" style={{ animationDelay: '0.2s' }}>
             Supercharge Your
-            <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent"> Lead Generation</span>
+            <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent"> Lead Generation</span>
           </h1>
-          <p className="text-xl text-gray-600 mb-12 max-w-3xl mx-auto">
-            Unlock the power of LinkedIn contact extraction with our flexible pricing plans. 
+          <p className="text-xl text-gray-300 mb-12 max-w-3xl mx-auto animate-slide-up" style={{ animationDelay: '0.4s' }}>
+            Unlock the power of LinkedIn contact extraction with Signal Hire API integration. 
             Start free and scale as your business grows.
           </p>
 
           {/* Billing Toggle */}
-          <div className="flex items-center justify-center mb-16">
-            <div className="bg-white rounded-lg p-1 shadow-lg border">
+          <div className="flex items-center justify-center mb-16 animate-slide-up" style={{ animationDelay: '0.6s' }}>
+            <div className="bg-gray-800/50 rounded-lg p-1 shadow-lg border border-gray-700 backdrop-blur-sm">
               <button
                 onClick={() => setBillingPeriod("monthly")}
                 className={`px-6 py-2 rounded-md text-sm font-medium transition-all ${
                   billingPeriod === "monthly"
-                    ? "bg-blue-600 text-white shadow-sm"
-                    : "text-gray-600 hover:text-gray-900"
+                    ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-sm"
+                    : "text-gray-300 hover:text-white hover:bg-gray-700"
                 }`}
               >
                 Monthly
@@ -138,12 +145,12 @@ const Subscription = () => {
                 onClick={() => setBillingPeriod("yearly")}
                 className={`px-6 py-2 rounded-md text-sm font-medium transition-all relative ${
                   billingPeriod === "yearly"
-                    ? "bg-blue-600 text-white shadow-sm"
-                    : "text-gray-600 hover:text-gray-900"
+                    ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-sm"
+                    : "text-gray-300 hover:text-white hover:bg-gray-700"
                 }`}
               >
                 Yearly
-                <span className="absolute -top-2 -right-2 bg-green-500 text-white text-xs px-1.5 py-0.5 rounded-full">
+                <span className="absolute -top-2 -right-2 bg-green-500 text-white text-xs px-1.5 py-0.5 rounded-full animate-bounce-slow">
                   Save 20%
                 </span>
               </button>
@@ -161,38 +168,39 @@ const Subscription = () => {
               return (
                 <Card
                   key={plan.name}
-                  className={`relative overflow-hidden border-0 shadow-xl hover:shadow-2xl transition-all duration-300 ${
-                    plan.popular ? "scale-105 ring-2 ring-purple-500 ring-opacity-50" : ""
+                  className={`relative overflow-hidden border-gray-700 bg-gray-800/50 backdrop-blur-sm hover:bg-gray-800/70 shadow-xl hover:shadow-2xl transition-all duration-300 animate-slide-up hover:scale-105 ${
+                    plan.popular ? "ring-2 ring-purple-500 ring-opacity-50 scale-105" : ""
                   }`}
+                  style={{ animationDelay: `${index * 0.2}s` }}
                 >
                   {plan.popular && (
-                    <div className="absolute top-0 left-0 right-0 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-center py-2 text-sm font-medium">
+                    <div className="absolute top-0 left-0 right-0 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-center py-2 text-sm font-medium animate-shimmer">
                       <Star className="w-4 h-4 inline-block mr-1" />
                       Most Popular
                     </div>
                   )}
                   
                   <CardHeader className={`${plan.popular ? "pt-12" : "pt-8"} pb-8`}>
-                    <div className={`w-16 h-16 rounded-2xl bg-gradient-to-r ${plan.color} mx-auto mb-4 flex items-center justify-center`}>
+                    <div className={`w-16 h-16 rounded-2xl bg-gradient-to-r ${plan.color} mx-auto mb-4 flex items-center justify-center animate-float`}>
                       <PlanIcon className="w-8 h-8 text-white" />
                     </div>
-                    <CardTitle className="text-2xl font-bold text-center text-gray-900">
+                    <CardTitle className="text-2xl font-bold text-center text-white">
                       {plan.name}
                     </CardTitle>
-                    <p className="text-gray-600 text-center">{plan.description}</p>
+                    <p className="text-gray-300 text-center">{plan.description}</p>
                     
                     <div className="text-center mt-6">
                       <div className="flex items-baseline justify-center">
-                        <span className="text-4xl font-bold text-gray-900">
+                        <span className="text-4xl font-bold text-white">
                           ${getPrice(plan)}
                         </span>
-                        <span className="text-gray-600 ml-1">
+                        <span className="text-gray-400 ml-1">
                           /{billingPeriod === "monthly" ? "month" : "month"}
                         </span>
                       </div>
                       {billingPeriod === "yearly" && (
                         <div className="mt-2">
-                          <Badge variant="secondary" className="bg-green-100 text-green-700">
+                          <Badge variant="secondary" className="bg-green-600/20 text-green-300 border-green-500/30">
                             Save {getSavings(plan)}% yearly
                           </Badge>
                         </div>
@@ -204,20 +212,20 @@ const Subscription = () => {
                     <ul className="space-y-3">
                       {plan.features.map((feature, featureIndex) => (
                         <li key={featureIndex} className="flex items-start space-x-3">
-                          <div className="flex-shrink-0 w-5 h-5 bg-green-100 rounded-full flex items-center justify-center mt-0.5">
-                            <Check className="w-3 h-3 text-green-600" />
+                          <div className="flex-shrink-0 w-5 h-5 bg-green-500/20 rounded-full flex items-center justify-center mt-0.5 border border-green-500/30">
+                            <Check className="w-3 h-3 text-green-400" />
                           </div>
-                          <span className="text-gray-700 text-sm">{feature}</span>
+                          <span className="text-gray-300 text-sm">{feature}</span>
                         </li>
                       ))}
                     </ul>
                     
                     <div className="pt-6">
                       <Button
-                        className={`w-full h-12 font-semibold ${
+                        className={`w-full h-12 font-semibold hover:scale-105 transition-all ${
                           plan.popular
-                            ? "bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white"
-                            : "bg-gray-900 hover:bg-gray-800 text-white"
+                            ? "bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white animate-glow"
+                            : "bg-gradient-to-r from-gray-700 to-gray-600 hover:from-gray-600 hover:to-gray-500 text-white"
                         }`}
                       >
                         {plan.name === "Enterprise" ? "Contact Sales" : "Start Free Trial"}
@@ -232,48 +240,48 @@ const Subscription = () => {
       </section>
 
       {/* Features Comparison */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-gray-900/50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Why ContactFinder?</h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Trusted by thousands of professionals worldwide for accurate contact extraction
+            <h2 className="text-3xl font-bold text-white mb-4 animate-fade-in">Why ContactFinder?</h2>
+            <p className="text-xl text-gray-300 max-w-2xl mx-auto animate-fade-in">
+              Trusted by thousands of professionals worldwide for accurate contact extraction with Signal Hire API
             </p>
           </div>
           
           <div className="grid md:grid-cols-3 gap-8">
-            <Card className="text-center p-8 border-0 bg-gradient-to-br from-blue-50 to-indigo-50">
-              <div className="w-16 h-16 bg-blue-600 rounded-2xl mx-auto mb-6 flex items-center justify-center">
+            <Card className="text-center p-8 border-gray-700 bg-gradient-to-br from-blue-900/20 to-indigo-900/20 backdrop-blur-sm hover:scale-105 transition-all animate-slide-up">
+              <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl mx-auto mb-6 flex items-center justify-center animate-float">
                 <Shield className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-xl font-semibold mb-4">Enterprise Security</h3>
-              <p className="text-gray-600">GDPR compliant with bank-level encryption and security protocols</p>
+              <h3 className="text-xl font-semibold mb-4 text-white">Enterprise Security</h3>
+              <p className="text-gray-300">GDPR compliant with bank-level encryption and security protocols</p>
             </Card>
             
-            <Card className="text-center p-8 border-0 bg-gradient-to-br from-green-50 to-emerald-50">
-              <div className="w-16 h-16 bg-green-600 rounded-2xl mx-auto mb-6 flex items-center justify-center">
+            <Card className="text-center p-8 border-gray-700 bg-gradient-to-br from-green-900/20 to-emerald-900/20 backdrop-blur-sm hover:scale-105 transition-all animate-slide-up" style={{ animationDelay: '0.2s' }}>
+              <div className="w-16 h-16 bg-gradient-to-r from-green-600 to-emerald-600 rounded-2xl mx-auto mb-6 flex items-center justify-center animate-float" style={{ animationDelay: '1s' }}>
                 <Zap className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-xl font-semibold mb-4">Lightning Fast</h3>
-              <p className="text-gray-600">Extract contacts in seconds with our advanced AI-powered system</p>
+              <h3 className="text-xl font-semibold mb-4 text-white">Lightning Fast</h3>
+              <p className="text-gray-300">Extract contacts in seconds with Signal Hire API integration</p>
             </Card>
             
-            <Card className="text-center p-8 border-0 bg-gradient-to-br from-purple-50 to-pink-50">
-              <div className="w-16 h-16 bg-purple-600 rounded-2xl mx-auto mb-6 flex items-center justify-center">
+            <Card className="text-center p-8 border-gray-700 bg-gradient-to-br from-purple-900/20 to-pink-900/20 backdrop-blur-sm hover:scale-105 transition-all animate-slide-up" style={{ animationDelay: '0.4s' }}>
+              <div className="w-16 h-16 bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl mx-auto mb-6 flex items-center justify-center animate-float" style={{ animationDelay: '2s' }}>
                 <Users className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-xl font-semibold mb-4">Team Collaboration</h3>
-              <p className="text-gray-600">Share contacts and collaborate seamlessly with your entire team</p>
+              <h3 className="text-xl font-semibold mb-4 text-white">Team Collaboration</h3>
+              <p className="text-gray-300">Share contacts and collaborate seamlessly with your entire team</p>
             </Card>
           </div>
         </div>
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-gray-800/30">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
+            <h2 className="text-3xl font-bold text-white mb-4 animate-fade-in">Frequently Asked Questions</h2>
           </div>
           
           <div className="max-w-3xl mx-auto space-y-6">
@@ -283,21 +291,21 @@ const Subscription = () => {
                 a: "Yes! All plans come with a 14-day free trial. No credit card required to get started."
               },
               {
-                q: "Can I change my plan anytime?",
-                a: "Absolutely! You can upgrade or downgrade your plan at any time. Changes take effect immediately."
+                q: "How does Signal Hire API integration work?",
+                a: "Our platform seamlessly integrates with Signal Hire API to provide accurate contact information from LinkedIn profiles."
               },
               {
                 q: "How accurate is the contact extraction?",
-                a: "Our AI-powered system achieves 95%+ accuracy rates for email extraction and 85%+ for phone numbers."
+                a: "With Signal Hire API integration, we achieve 95%+ accuracy rates for email extraction and 85%+ for phone numbers."
               },
               {
                 q: "Is the service GDPR compliant?",
                 a: "Yes, we are fully GDPR compliant and follow all data protection regulations strictly."
               }
             ].map((faq, index) => (
-              <Card key={index} className="p-6 border-0 shadow-sm">
-                <h3 className="font-semibold text-gray-900 mb-2">{faq.q}</h3>
-                <p className="text-gray-600">{faq.a}</p>
+              <Card key={index} className="p-6 border-gray-700 bg-gray-800/50 backdrop-blur-sm hover:bg-gray-800/70 transition-all animate-slide-up" style={{ animationDelay: `${index * 0.1}s` }}>
+                <h3 className="font-semibold text-white mb-2">{faq.q}</h3>
+                <p className="text-gray-300">{faq.a}</p>
               </Card>
             ))}
           </div>
@@ -305,19 +313,20 @@ const Subscription = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 to-indigo-600">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold text-white mb-4">Ready to Get Started?</h2>
-          <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+      <section className="py-20 bg-gradient-to-r from-blue-900 to-indigo-900 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20"></div>
+        <div className="container mx-auto px-4 text-center relative z-10">
+          <h2 className="text-3xl font-bold text-white mb-4 animate-fade-in">Ready to Get Started?</h2>
+          <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto animate-fade-in">
             Join thousands of professionals who trust ContactFinder for their lead generation needs
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up">
             <Link to="/signup">
-              <Button className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-3 text-lg font-semibold">
+              <Button className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-3 text-lg font-semibold hover:scale-105 transition-all">
                 Start Free Trial
               </Button>
             </Link>
-            <Button variant="outline" className="border-white text-white hover:bg-white/10 px-8 py-3 text-lg font-semibold">
+            <Button variant="outline" className="border-white text-white hover:bg-white/10 px-8 py-3 text-lg font-semibold hover:scale-105 transition-all">
               Contact Sales
             </Button>
           </div>
@@ -325,11 +334,11 @@ const Subscription = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
+      <footer className="bg-black text-white py-12">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex items-center space-x-2 mb-4 md:mb-0">
-              <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg flex items-center justify-center">
+              <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg flex items-center justify-center animate-glow">
                 <Search className="w-5 h-5 text-white" />
               </div>
               <span className="text-xl font-bold">ContactFinder</span>
